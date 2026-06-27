@@ -46,21 +46,26 @@ if(small.matches) {
 
 // Verifique a distância da primeira imagem
 // em relação ao topo da página
-
 const img = document.querySelector('img');
+const imgTop = img.offsetHeight;
 
-imgHeight = img.offsetTop;
-
-console.log(imgHeight);
+console.log(imgTop);
 
 // Retorne a soma da largura de todas as imagens
 
-const imagens = document.querySelectorAll('img');
-let soma = 0;
-imagens.forEach((imgs) => {
-  soma += imgs.offsetWidth;
-});
-console.log(soma);
+function somaImgs() {
+  const Imgs = document.querySelectorAll('img');
+  let soma = 0;
+  Imgs.forEach((imagem) => {
+    console.log(imagem.offsetWidth);
+    soma += imagem.offsetWidth;
+  });
+  console.log(soma);
+}
+
+window.onload = function () {
+  somaImgs();
+};
 
 // Verifique se os links da página possuem
 // o mínimo recomendado para telas utilizadas
@@ -68,22 +73,21 @@ console.log(soma);
 
 const links = document.querySelectorAll('a');
 
-links.forEach((link) => {
-  const linkWidth = link.offsetWidth;
-  const linkHeight = link.offsetHeight;
+links.forEach((i) => {
+  const linkWidth = i.offsetWidth;
+  const linkHeight = i.offsetHeight;
   if (linkWidth >= 48 && linkHeight >= 48) {
-    console.log(link, 'Possui acessibilidade');
-  } else {
-    console.log(link, 'Não possui acessibilidade');
-  }
+  console.log(`${i} Possui acessibilidade`);
+} else {
+  console.log(`${i} Não possui acessibilidade`);
+}
 });
 
 // Se o browser for menor que 720px,
 // adicione a classe menu-mobile ao menu
+const browserSmall = window.matchMedia('(max-width: 720px)').matches;
 
-const browser = window.matchMedia('(max-width: 720px)').matches;
-
-if (browser) {
+if (browserSmall) {
   const menu = document.querySelector('.menu');
   menu.classList.add('menu-mobile');
-};
+}

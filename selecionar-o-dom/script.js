@@ -38,7 +38,7 @@ console.log(todasImg);
 
 // Retorne no console apenas as imagens que começarem com a palavra imagem
 
-const imgI = document.querySelectorAll('img[src^="img/imagem"]');
+const imgI = document.querySelectorAll('img[src^="img/imagem"]')
 
 console.log(imgI)
 
